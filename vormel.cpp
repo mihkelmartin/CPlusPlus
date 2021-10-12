@@ -43,10 +43,16 @@ int main() {
             a[i][j]= u;
         }
         if(bV){
-            for (int l = 1; l < N; ++l) {
-                a[i][0]=r;
-                for (int m = 1; m < b[i][0]; ++m) {
-                    int u = a[i][l-1] + r + m * d;
+            a[i][0]=r;
+            int ring = 1;
+            while(ring < N){
+                int vr = 1;
+                if(vr < b[i][0]){
+                    a[i][ring] = a[i][ring-1] +r * vr *d;
+                    vr++;
+                } else {
+                    a[i][ring] = a[i][0] + K;
+                    vr=1;
                 }
             }
         }
