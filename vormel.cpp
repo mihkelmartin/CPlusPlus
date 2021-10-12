@@ -42,18 +42,26 @@ int main() {
             }
             a[i][j]= u;
         }
+
+        // Vahetus aitab, täidame uuesti
         if(bV){
+            for (int j = 0; j < N; ++j) {
+                a[i][j] = 0;
+            }
+
             a[i][0]=r;
             int ring = 1;
+            int vr = 1;
             while(ring < N){
-                int vr = 1;
-                if(vr < b[i][0]){
-                    a[i][ring] = a[i][ring-1] +r * vr *d;
+                if(vr <= b[i][0]){
+                    a[i][ring] = a[i][ring-1] + r + vr * d;
                     vr++;
                 } else {
-                    a[i][ring] = a[i][0] + K;
+                    a[i][ring] = a[i][ring-1] + a[i][0] + K;
+                    cout<<"Vahetus: " << ring << endl;
                     vr=1;
                 }
+                ring++;
             }
         }
     }
