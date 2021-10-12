@@ -26,16 +26,18 @@ int main() {
             int kprm = 0;
             int v = INT32_MAX;
             while (k > 0) {
+                int tmp1 = a[i][k-1];
+                int tmp2 = a[i][j-k];
                 int vtmp = a[i][k-1] + a[i][j-k] + K;
                 if(vtmp < v){
                     v = a[i][k-1] + a[i][j-k] + K;
-                    kprm = k + 1;
+                    kprm = j - k + 1;
                 }
                 k--;
             }
             if(v<u){
                 b[i][0] = kprm;
-                b[i][1] = j - kprm;
+                b[i][1] = j - kprm + 1;
                 cout<<"Leidsime "<< i << " "<<j << " " << kprm;
             }
             a[i][j]= std::min(u, v);
