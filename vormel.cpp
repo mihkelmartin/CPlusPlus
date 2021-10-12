@@ -7,8 +7,10 @@ int main() {
     cin>>M>>N>>K;
     // Loo massiv ringiaegadele
     int **a = new int*[M];
+    int **s = new int*[M];
     for (int i = 0; i < M; ++i) {
         a[i] = new int[N];
+        s[i] = new int[N];
     }
 
 
@@ -17,10 +19,12 @@ int main() {
         int r, d;
         cin>>r>>d;
         a[i][0]=r;
+        s[i][0]=0;
         int kparim = 0;
         int lisakordaja = 1;
         int viimane_vahetus = INT32_MIN;
         for (int j = 1; j < N; ++j) {
+            s[i][j] = s[i][j-1];
             int u = a[i][j-1] + r + lisakordaja * d;
 
             lisakordaja++;
@@ -37,7 +41,8 @@ int main() {
             }
             if(v<u){
                 // k kohal vahetus k=0,k+1=1
-                cout<<"Vahetus: " << j;
+                cout<<"Vahetus: " << j << " " << kparim;
+                s[i][j] = kparim;
                 lisakordaja = j - kparim + 1;
                 viimane_vahetus = kparim + 1;
                 u = v;
@@ -52,7 +57,7 @@ int main() {
     cout<<endl;
     for (int i = 0; i < M; ++i) {
         for (int j = 0; j < N; ++j) {
-            cout<<a[i][j]<<" "<<endl;
+            cout<< j << " " <<a[i][j]<<" " << s[i][j] <<endl;
         }
         cout<<endl;
     }
