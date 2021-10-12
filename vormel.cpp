@@ -19,15 +19,13 @@ int main() {
         int r, d;
         cin>>r>>d;
         a[i][0]=r;
+        bool bV = false;
         for (int j = 1; j < N; ++j) {
             int u = a[i][j-1] + r + j * d;
-
             int k = j;
             int kprm = 0;
             int v = INT32_MAX;
             while (k > 0) {
-                int tmp1 = a[i][k-1];
-                int tmp2 = a[i][j-k];
                 int vtmp = a[i][k-1] + a[i][j-k] + K;
                 if(vtmp < v){
                     v = a[i][k-1] + a[i][j-k] + K;
@@ -37,10 +35,20 @@ int main() {
             }
             if(v<u){
                 b[i][0] = kprm;
+                // Arv paremaid peale vahetust
                 b[i][1] = j - kprm + 1;
-                cout<<"Leidsime "<< i << " "<<j << " " << kprm;
+                bV = true;
+                break;
             }
-            a[i][j]= std::min(u, v);
+            a[i][j]= u;
+        }
+        if(bV){
+            for (int l = 1; l < N; ++l) {
+                a[i][0]=r;
+                for (int m = 1; m < b[i][0]; ++m) {
+                    int u = a[i][l-1] + r + m * d;
+                }
+            }
         }
     }
 
