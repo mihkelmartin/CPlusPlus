@@ -27,7 +27,7 @@ int main() {
             int k = j;
             int v = INT32_MAX;
             // k < ?
-            while (k > 0 && k > viimane_vahetus) {
+            while (k > 0 && k-1 > viimane_vahetus) {
                 int vtmp = a[i][k-1] + a[i][j-k] + K;
                 if(vtmp < v){
                     v = a[i][k-1] + a[i][j-k] + K;
