@@ -7,9 +7,12 @@ int main() {
     cin>>M>>N>>K;
     // Loo massiv ringiaegadele
     int **a = new int*[M];
+    int **b = new int*[M];
     for (int i = 0; i < M; ++i) {
         a[i] = new int[N];
+        b[i] = new int[2];
     }
+
 
     // Loe sisse ja täida
     for (int i = 0; i < M; ++i) {
@@ -31,6 +34,8 @@ int main() {
                 k--;
             }
             if(v<u){
+                b[i][0] = kprm;
+                b[i][1] = j - kprm;
                 cout<<"Leidsime "<< i << " "<<j << " " << kprm;
             }
             a[i][j]= std::min(u, v);
@@ -39,7 +44,7 @@ int main() {
 
 
 
-
+    cout<<endl;
     for (int i = 0; i < M; ++i) {
         for (int j = 0; j < N; ++j) {
             cout<<a[i][j]<<" ";
