@@ -57,7 +57,7 @@ int main() {
     cout<<endl;
     for (int i = 0; i < M; ++i) {
         for (int j = 0; j < N; ++j) {
-            cout<< j << " " <<a[i][j]<<" " << s[i][j] <<endl;
+            cout<< j+1 << " " <<a[i][j]<<" " << s[i][j]+1 <<endl;
         }
         cout<<endl;
     }
