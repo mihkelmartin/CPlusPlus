@@ -31,7 +31,10 @@ int main() {
             int k = j;
             int v = INT32_MAX;
             // k < ?
-            while (k > 0 && k-1 > viimane_vahetus) {
+            // Vahetust saab proovida suuremate kui viimane vahetus
+            // Või proovida ära võtta viimane vahetus
+            // Kui üritame viimast vahetust ära võtta siis on keerulisem lugu, tuleb arvutada
+            while (k > 0 && k >  viimane_vahetus) {
                 int vtmp = a[i][k-1] + a[i][j-k] + K;
                 if(vtmp < v){
                     v = a[i][k-1] + a[i][j-k] + K;
@@ -44,7 +47,7 @@ int main() {
                 cout<<"Vahetus: " << j << " " << kparim;
                 s[i][j] = kparim;
                 lisakordaja = j - kparim + 1;
-                viimane_vahetus = kparim + 1;
+                viimane_vahetus = kparim;
                 u = v;
             }
             a[i][j]= u;
