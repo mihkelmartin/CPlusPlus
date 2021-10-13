@@ -54,9 +54,9 @@ int main() {
     }
 
     int parim_rehv = -1;
-    int parim_aeg = INT32_MIN;
+    int parim_aeg = INT32_MAX;
     for (int i = 0; i < M; ++i) {
-        if(a[i][N-1] > parim_aeg){
+        if(a[i][N-1] < parim_aeg){
             parim_aeg = a[i][N-1];
             parim_rehv = i;
         }
