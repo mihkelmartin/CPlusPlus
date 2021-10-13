@@ -6,7 +6,6 @@ int M, N, K;
 int main() {
     cin>>M>>N>>K;
     // Loo massiv ringiaegadele
-    N = N*2;
     int **a = new int*[M];
     int **s = new int*[M];
     for (int i = 0; i < M; ++i) {
@@ -40,7 +39,6 @@ int main() {
                 }
                 k--;
             }
-
             // Kui teha vahetus, kohal mille eelduseks oli mingi muu vahetus, siis seda teha ei tohi !!!
             // Mida perset. seega  s[i][kparim] == s[i][kparim-1]
             if(v < u && s[i][kparim] == s[i][kparim-1]){
@@ -55,6 +53,15 @@ int main() {
 
     }
 
+    int parim_rehv = -1;
+    int parim_aeg = INT32_MIN;
+    for (int i = 0; i < M; ++i) {
+        if(a[i][N-1] > parim_aeg){
+            parim_aeg = a[i][N-1];
+            parim_rehv = i;
+        }
+    }
+    cout<<parim_aeg << " " << parim_rehv;
 
 
     cout<<endl;
@@ -64,31 +71,4 @@ int main() {
         }
         cout<<endl;
     }
-
-    cout<<"Juhhei!";
-
 }
-
-/*
-        if(bV){
-            for (int j = 0; j < N; ++j) {
-                a[i][j] = 0;
-            }
-
-            a[i][0]=r;
-            int ring = 1;
-            int vr = 1;
-            while(ring < N){
-                if(vr <= b[i][0]){
-                    a[i][ring] = a[i][ring-1] + r + vr * d;
-                    vr++;
-                } else {
-                    a[i][ring] = a[i][ring-1] + a[i][0] + K;
-                    cout<<"Vahetus: " << ring << endl;
-                    vr=1;
-                }
-                ring++;
-            }
-        }
-
- */
