@@ -6,6 +6,7 @@ int M, N, K;
 int main() {
     cin>>M>>N>>K;
     // Loo massiv ringiaegadele
+    N = N*2;
     int **a = new int*[M];
     int **s = new int*[M];
     for (int i = 0; i < M; ++i) {
@@ -30,10 +31,9 @@ int main() {
             lisakordaja++;
             int k = j;
             int v = INT32_MAX;
-            // k < ?
-            // Vahetust saab proovida suuremate kui viimane vahetus
-            // Või proovida ära võtta viimane vahetus
-            // Kui üritame viimast vahetust ära võtta siis on keerulisem lugu, tuleb arvutada
+            // k > viimane_vahetus
+            // Kui teha vahetus, kohal mille eelduseks oli mingi muu vahetus, siis seda teha ei tohi !!!
+            // Mida perset
             while (k > 0 && k >  viimane_vahetus) {
                 int vtmp = a[i][k-1] + a[i][j-k] + K;
                 if(vtmp < v){
@@ -42,9 +42,8 @@ int main() {
                 }
                 k--;
             }
-            if(v<u){
+            if(v < u){
                 // k kohal vahetus k=0,k+1=1
-                cout<<"Vahetus: " << j << " " << kparim;
                 s[i][j] = kparim;
                 lisakordaja = j - kparim + 1;
                 viimane_vahetus = kparim;
