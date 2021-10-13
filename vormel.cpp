@@ -1,4 +1,3 @@
-#include <string>
 #include <vector>
 #include <iostream>
 #include <algorithm>
@@ -9,7 +8,9 @@ int main() {
     cin>>M>>N>>K;
     // Loo massiv ringiaegadele
     int **a = new int*[M];
+    // Loo massiiv vahetustele
     int **s = new int*[M];
+    // Alusta
     for (int i = 0; i < M; ++i) {
         a[i] = new int[N];
         s[i] = new int[N];
@@ -55,6 +56,7 @@ int main() {
 
     }
 
+
     int parim_rehv = -1;
     int parim_aeg = INT32_MAX;
 
@@ -67,8 +69,13 @@ int main() {
     int n = N-1;
     std::vector<int> v;
     while (s[parim_rehv][n] > 1){
-        v.insert(v.begin(), s[parim_rehv][n]);
-        n = s[parim_rehv][n];
+        int vahetus = s[parim_rehv][n];
+        // Igal ringil vahetus, siis sama
+        if(vahetus == n){
+            vahetus--;
+        }
+        v.insert(v.begin(), vahetus);
+        n = vahetus;
     }
     cout << parim_rehv + 1 << " " << v.size() << endl;
     for(int i = 0; i < v.size(); i++)
