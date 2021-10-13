@@ -67,13 +67,13 @@ int main() {
     int n = N-1;
     std::vector<int> v;
     while (s[parim_rehv][n] > 1){
-        v.insert(v.begin(), s[parim_rehv][n] - 1);
+        v.insert(v.begin(), s[parim_rehv][n]);
         n = s[parim_rehv][n];
     }
-    cout << parim_rehv + 1 << " " << v.size() - 1 << endl;
+    cout << parim_rehv + 1 << " " << v.size() << endl;
     for(int i = 0; i < v.size(); i++)
     {
-        std::cout<<v[i]<< " " << parim_rehv +1 << std::endl;
+        std::cout<<v[i]<< " " << parim_rehv + 1 << std::endl;
     }
 
     /*
