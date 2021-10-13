@@ -32,8 +32,6 @@ int main() {
             int k = j;
             int v = INT32_MAX;
             // k > viimane_vahetus
-            // Kui teha vahetus, kohal mille eelduseks oli mingi muu vahetus, siis seda teha ei tohi !!!
-            // Mida perset
             while (k > 0 && k >  viimane_vahetus) {
                 int vtmp = a[i][k-1] + a[i][j-k] + K;
                 if(vtmp < v){
@@ -42,7 +40,10 @@ int main() {
                 }
                 k--;
             }
-            if(v < u){
+
+            // Kui teha vahetus, kohal mille eelduseks oli mingi muu vahetus, siis seda teha ei tohi !!!
+            // Mida perset. seega  s[i][kparim] == s[i][kparim-1]
+            if(v < u && s[i][kparim] == s[i][kparim-1]){
                 // k kohal vahetus k=0,k+1=1
                 s[i][j] = kparim;
                 lisakordaja = j - kparim + 1;
