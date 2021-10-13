@@ -1,3 +1,5 @@
+#include <string>
+#include <vector>
 #include <iostream>
 #include <algorithm>
 using namespace std;
@@ -55,15 +57,26 @@ int main() {
 
     int parim_rehv = -1;
     int parim_aeg = INT32_MAX;
+
     for (int i = 0; i < M; ++i) {
         if(a[i][N-1] < parim_aeg){
             parim_aeg = a[i][N-1];
             parim_rehv = i;
         }
     }
-    cout<<parim_aeg << " " << parim_rehv;
+    int n = N-1;
+    std::vector<int> v;
+    while (s[parim_rehv][n] > 1){
+        v.insert(v.begin(), s[parim_rehv][n] - 1);
+        n = s[parim_rehv][n];
+    }
+    cout << parim_rehv + 1 << " " << v.size() - 1 << endl;
+    for(int i = 0; i < v.size(); i++)
+    {
+        std::cout<<v[i]<< " " << parim_rehv +1 << std::endl;
+    }
 
-
+    /*
     cout<<endl;
     for (int i = 0; i < M; ++i) {
         for (int j = 0; j < N; ++j) {
@@ -71,4 +84,5 @@ int main() {
         }
         cout<<endl;
     }
+     */
 }
